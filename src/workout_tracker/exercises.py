@@ -22,7 +22,7 @@ class Exercise:
         # TODO: Set self.date (use datetime.now().strftime("%Y-%m-%d") if date is None)
         self.name = name
         if date is None:
-            self.date = datetime.now().strftime(%Y.%m.%d)
+            self.date = datetime.now().strftime("%Y-%m-%d")
         else:
             self.date = date
     
@@ -105,4 +105,4 @@ class CardioExercise(Exercise):
         """Return detailed string representation."""
         # TODO: Return something like "Running (3.5 miles, 30 min): 350 calories"
         # Include self.name, self.distance, self.duration, and self.calculate_calories()
-        return f"{self.name} ({self.distance:.1f} miles, {self.duration:.0f} min): {self.calculate_calories():,.0f}: calories"
+        return f"{self.name} ({self.distance:.1f} miles, {self.duration:.0f} min): {self.calculate_calories():,.0f} calories"
