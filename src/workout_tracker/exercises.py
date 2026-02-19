@@ -138,3 +138,55 @@ class StrengthExercise(Exercise):
 
     def __str__(self):
         return f"{self.name} ({self.weight} lbs x {self.reps} reps x {self.sets} sets): {self.calculate_calories():,.0f} calories"
+
+class FlexibilityExercise(Exercise):
+    """
+    Additional Attributes:
+
+    duration (float) - Minutes
+    intensity (str) - 'low', 'medium', or 'high'
+    Class-level constant: Create a dictionary that maps intensity levels to multipliers:
+
+    'low': 1.0
+    'medium': 1.5
+    'high': 2.0
+    Constructor:
+
+    Method signature: def __init__(self, name: str, duration: float, intensity: str = 'medium', date: str = None):
+    Call parent constructor
+    Store duration
+    Convert intensity to lowercase
+    Validate: If intensity is not one of the valid options, raise ValueError with an appropriate message
+    Override These Methods:
+
+    calculate_calories()
+
+    Formula: duration * 2.5 * intensity_multiplier
+    Look up the multiplier from your class constant
+    get_duration()
+
+    Return the duration attribute
+    __str__()
+
+    Format: "Yoga (30 min, medium intensity): 112 calories"
+    Include name, duration, intensity, and calculated calories
+    Test and Commit
+    bash
+    """
+    INTENSITY_LEVELS = {'low': 1.0, 'medium': 1.5, 'high': 2.0}
+
+    def __init__(self, name: str, duration: float, intensity: str = 'medium', date: str = None):
+        super().__init__(name, date)
+        self.duration = duration
+        self.intensity = intensity.lower()
+        if self.intensity not in self.INTENSITY_LEVELS:
+            raise ValueError(f"Invalid intensity level: {intensity}. Must be 'low', 'medium', or 'high'.")
+
+    def calculate_calories(self):
+        return self.duration * 2.5 * self.INTENSITY_LEVELS[self.intensity]
+
+    def get_duration(self):
+        return self.duration
+
+    def __str__(self):
+        return f"{self.name} ({self.duration:.0f} min, {self.intensity} intensity): {self.calculate_calories():,.0f} calories"
