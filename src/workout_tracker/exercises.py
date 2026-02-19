@@ -71,9 +71,6 @@ class CardioExercise(Exercise):
             duration: Time spent in minutes
             date: Date performed (optional)
         """
-        # TODO: Call parent class __init__ with super()
-        # TODO: Set self.distance
-        # TODO: Set self.duration
         super().__init__(name, date)
         self.distance = distance
         self.duration = duration
@@ -86,7 +83,6 @@ class CardioExercise(Exercise):
         Returns:
             float: Estimated calories burned
         """
-        # TODO: Implement the formula
         return self.distance * 100.0
     
     def get_duration(self) -> float:
@@ -95,11 +91,9 @@ class CardioExercise(Exercise):
         Returns:
             float: Duration in minutes
         """
-        # TODO: Return the duration attribute
         return self.duration
     
     def __str__(self) -> str:
         """Return detailed string representation."""
-        # TODO: Return something like "Running (3.5 miles, 30 min): 350 calories"
         # Include self.name, self.distance, self.duration, and self.calculate_calories()
         return f"{self.name} ({self.distance:.1f} miles, {self.duration:.0f} min): {self.calculate_calories():,.0f} calories"
