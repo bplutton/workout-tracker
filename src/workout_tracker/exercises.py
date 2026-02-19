@@ -18,8 +18,6 @@ class Exercise:
             name: The name of the exercise
             date: The date performed (defaults to today if not provided)
         """
-        # TODO: Set self.name
-        # TODO: Set self.date (use datetime.now().strftime("%Y-%m-%d") if date is None)
         self.name = name
         if date is None:
             self.date = datetime.now().strftime("%Y-%m-%d")
@@ -50,7 +48,6 @@ class Exercise:
     
     def __str__(self) -> str:
         """Return a string representation of the exercise."""
-        # TODO: Return a string like "ExerciseName: 100 calories"
         # Use self.calculate_calories() to get the calories
         return f"{self.name}: {self.calculate_calories:,.0f} calories"
 
