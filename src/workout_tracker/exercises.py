@@ -97,3 +97,44 @@ class CardioExercise(Exercise):
         """Return detailed string representation."""
         # Include self.name, self.distance, self.duration, and self.calculate_calories()
         return f"{self.name} ({self.distance:.1f} miles, {self.duration:.0f} min): {self.calculate_calories():,.0f} calories"
+
+class StrengthExercise(Exercise):
+    """
+    Additional Attributes:
+
+    weight (float) - Pounds lifted
+    reps (int) - Repetitions per set
+    sets (int) - Number of sets
+    Constructor:
+
+    Method signature: def __init__(self, name: str, weight: float, reps: int, sets: int, date: str = None):
+    Call parent constructor
+    Store weight, reps, and sets
+    Override These Methods:
+
+    calculate_calories()
+    Formula: weight * reps * sets * 0.05
+
+    get_duration()
+    Formula: sets * 3 (assumes 3 min per set including rest)
+
+    __str__()
+
+    Format: "Bench Press (135 lbs x 10 reps x 3 sets): 202 calories"
+    Include name, weight, reps, sets, and calculated calories
+    """
+
+    def __init__(self, name: str, weight: float, reps: int, sets: int, date: str = None):
+        super().__init__(name, date)
+        self.weight = weight
+        self.reps = reps
+        self.sets = sets
+        
+    def calculate_calories(self):
+        return self.weight * self.reps * self.sets * 0.05
+    
+    def get_duration(self):
+        return self.sets * 3
+
+    def __str__(self):
+        return f"{self.name} ({self.weight} lbs x {self.reps} reps x {self.sets} sets): {self.calculate_calories():,.0f} calories"
